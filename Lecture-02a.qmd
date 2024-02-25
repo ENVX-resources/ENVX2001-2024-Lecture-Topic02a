@@ -324,3 +324,5 @@ This presentation is based on the [SOLES Quarto reveal.js template][soles-reveal
 <!-- Links -->
 [soles-revealjs]: https://github.com/usyd-soles-edu/soles-revealjs
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
+
+### [⇣PDF](Lecture-02a.pdf)
