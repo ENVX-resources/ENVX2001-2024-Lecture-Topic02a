@@ -17,4 +17,4 @@
 </div>
 
 [HTML]: https://envx-resources.github.io/ENVX2001-2024-Lecture-Topic02a/
-[PDF]: https://envx-resources.github.io/ENVX2001-2024-Lecture-Topic02b/Lecture-02b.pdf
+[PDF]: https://envx-resources.github.io/ENVX2001-2024-Lecture-Topic02a/Lecture-02a.pdf
