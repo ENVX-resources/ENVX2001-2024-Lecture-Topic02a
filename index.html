@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="Lecture-01a_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Lecture-01a_files/libs/quarto-html/tabby.min.js"></script>
-<script src="Lecture-01a_files/libs/quarto-html/popper.min.js"></script>
-<script src="Lecture-01a_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="Lecture-01a_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Lecture-01a_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Lecture-01a_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="Lecture-01a_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<link href="Lecture-01a_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="Lecture-01a_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+<script src="Lecture-02a_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Lecture-02a_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Lecture-02a_files/libs/quarto-html/popper.min.js"></script>
+<script src="Lecture-02a_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Lecture-02a_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Lecture-02a_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Lecture-02a_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="Lecture-02a_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.542">
 
   <meta name="author" content="Dr.&nbsp;Januar Harianto">
-  <title>Welcome</title>
+  <title>Lecture 02a – Sampling designs I</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="Lecture-01a_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="Lecture-01a_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="Lecture-02a_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Lecture-02a_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -31,13 +29,94 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="Lecture-01a_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="Lecture-01a_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="Lecture-01a_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="Lecture-01a_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="Lecture-01a_files/libs/revealjs/plugin/verticator/verticator.css" rel="stylesheet">
-  <link href="Lecture-01a_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="Lecture-02a_files/libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <link href="Lecture-02a_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Lecture-02a_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Lecture-02a_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Lecture-02a_files/libs/revealjs/plugin/verticator/verticator.css" rel="stylesheet">
+  <link href="Lecture-02a_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -328,8 +407,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="_extensions/soles/logo/title-slide.png" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Welcome</h1>
+<section id="title-slide" data-background-image="_assets/title-slide.png" data-background-size="contain" class="quarto-title-block center">
+  <h1 class="title">Lecture 02a – Sampling designs I</h1>
   <p class="subtitle">ENVX2001 Applied Statistical Methods</p>
 
 <div class="quarto-title-authors">
@@ -344,195 +423,390 @@ Dr.&nbsp;Januar Harianto
 </div>
 
   <p class="date">Feb 2024</p>
-</section>
-<section id="acknowledgement-to-country" class="title-slide slide level1 center">
-<h1>Acknowledgement to Country</h1>
-<p>The University of Sydney is on Gadigal Country. We acknowledge their ongoing connection to and ownership of this land and pay our respects to past, present and emerging leaders.</p>
-</section>
-
-<section>
-<section id="about" class="title-slide slide level1 center">
-<h1>About</h1>
-<p>Staff | Structure | Attendance</p>
-</section>
-<section id="staff" class="slide level2">
-<h2>Staff</h2>
-<div class="quarto-layout-panel" data-layout-ncol="4" style="text-align:center;">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/aaron.tiff" width="200"></p>
-<figcaption>Aaron Greenville</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/liana.jpeg" width="206"></p>
-<figcaption>Liana Pozza</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/januar.jpeg" width="230"></p>
-<figcaption>Januar Harianto</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/matcrowther.jpeg" width="205"></p>
-<figcaption>Mathew Crowther</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<h3 id="demonstrators">Demonstrators</h3>
-<p><em>Check Canvas</em></p>
-</section>
-<section id="structure" class="slide level2">
-<h2>Structure</h2>
-<h3 id="lectures">Lectures</h3>
-<p><strong>Tue 10 AM</strong> – <a href="https://venueweb.sydney.edu.au/F11.01.145">Chemistry Lecture Theatre 1</a></p>
-<p><strong>Wed 11 AM</strong> – <a href="https://venueweb.sydney.edu.au/F11.02.238">Chemistry Lecture Theatre 3</a></p>
-<h3 id="tutorials">Tutorials</h3>
-<p><strong>Self-guided</strong> sessions (1 hour), to be completed before the week’s lab.</p>
-<h3 id="labs">Labs</h3>
-<p>All labs are held in the <strong>South Eveleigh Precinct</strong> (more on this later):</p>
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Outline</h2>
 <ul>
-<li>Thursday 9 am – 12 pm</li>
-<li>Friday 10 am – 1 pm, 2 pm – 5 pm</li>
+<li><a href="#/last-week" id="/toc-last-week">Last week</a></li>
+<li><a href="#/today-observational-studies" id="/toc-today-observational-studies">Today: observational studies</a></li>
+<li><a href="#/interpreting-sampled-data" id="/toc-interpreting-sampled-data">Interpreting sampled data</a></li>
+<li><a href="#/confidence-intervals" id="/toc-confidence-intervals">Confidence intervals</a></li>
+<li><a href="#/calculating-confidence-intervals" id="/toc-calculating-confidence-intervals">Calculating confidence intervals</a></li>
+<li><a href="#/data-story-soil-carbon" id="/toc-data-story-soil-carbon">Data story: soil carbon</a></li>
+<li><a href="#/simple-random-sampling-estimates" id="/toc-simple-random-sampling-estimates">Simple random sampling: estimates</a></li>
+<li><a href="#/tomorrow-stratified-random-sampling" id="/toc-tomorrow-stratified-random-sampling">Tomorrow: stratified random sampling</a></li>
 </ul>
+</nav>
 </section>
-<section id="attendance" class="slide level2">
-<h2>Attendance</h2>
-<p>Attendance is <strong>mandatory</strong> for labs and we hope to see you in person for Lectures!</p>
+<section>
+<section id="last-week" class="title-slide slide level1 center">
+<h1>Last week</h1>
+
+</section>
+<section id="observational-study-vs.-controlled-experiment" class="slide level2">
+<h2>Observational study vs.&nbsp;controlled experiment</h2>
+<table>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 40%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Observational study</th>
+<th>Controlled experiment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Control</strong></td>
+<td>No control over the variables of interest - <strong>Mensurative</strong> and <strong>Absolute</strong></td>
+<td>Control over the variables of interest - <strong>Comparative</strong> and <strong>Manipulative</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Causation</strong></td>
+<td>Cannot establish causation, but perhaps <strong>association</strong></td>
+<td>Can establish <strong>causation</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Feasibility</strong></td>
+<td>Can be done in many cases</td>
+<td>May be destructive and cannot always be done</td>
+</tr>
+</tbody>
+</table>
 </section></section>
 <section>
-<section id="south-eveleigh-precinct" class="title-slide slide level1 center">
-<h1>South Eveleigh Precinct</h1>
-<p>Used to be known as the <strong>Australian Techonlogy Park</strong> (ATP). <em>Still is, but it used to, too.</em></p>
-</section>
-<section id="biomedical-building" class="slide level2">
-<h2>Biomedical Building</h2>
+<section id="today-observational-studies" class="title-slide slide level1 center">
+<h1>Today: observational studies</h1>
 
-<img data-src="images/biomedical.jpg" class="r-stretch"><p>Credit: Michael Wheatland</p>
 </section>
-<section id="directions" class="slide level2">
-<h2>Directions</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="walking">Walking</h3>
-<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d3311.892510223299!2d151.19220377714373!3d-33.89242207028511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x6b12b1d46683b08b%3A0x16d4584b9e392df3!2sCarslaw%20Building%2C%20University%20of%20Sydney%2C%20Camperdown%20NSW%2C%20Australia!3m2!1d-33.8885751!2d151.1903621!4m5!1s0x6b12b1ce3cfcd14d%3A0xe363fbe9239512d6!2s1%20Central%20Avenue%2C%20Eveleigh%20NSW%2C%20Australia!3m2!1d-33.896277999999995!2d151.19577999999998!5e0!3m2!1sen!2smy!4v1702530988987!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-</div><div class="column" style="width:50%;">
+<section id="two-common-types" class="slide level2">
+<h2>Two common types</h2>
 <div class="fragment">
 <!-- -->
-<h3 id="buses">Buses</h3>
-<p><a href="https://www.sydney.edu.au/about-us/campuses/getting-to-campus/campus-bus-timetables.html">Courtesy buses</a> are available:</p>
+<h3 id="surveys">Surveys</h3>
 <ul>
-<li>Best option is to take the bus from <strong>Fisher Library</strong> to <strong>Redfern Station</strong>, then walk to the precinct (through the new station platform as “local traffic”).</li>
-<li>Alternatively, direct buses are available – but less frequent.</li>
-</ul>
-<h3 id="driving">Driving</h3>
-<p>Free parking is available around Henderson Road, but it is extremely crowded. We do <em>not</em> recommend driving to the precinct.</p>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="why-study-statistics" class="title-slide slide level1 center">
-<h1>Why study statistics?</h1>
-<blockquote>
-<p>Doesn’t seem relevant to my degree…</p>
-</blockquote>
-</section>
-<section id="learn-so-you-can" class="slide level2">
-<h2>Learn, so you can…</h2>
-<div>
-<ul>
-<li class="fragment">Conduct effective <strong>research</strong>; <em>but if you are not a researcher</em>, you can still…</li>
-<li class="fragment">Critically <strong>evaluate</strong> research findings; <em>but if you don’t plan to read scientific literature</em>, you can still…</li>
-<li class="fragment">Make informed <strong>decisions</strong> based on evidence and know the signs when someone is trying to mislead you.</li>
+<li>Estimate a statistic (e.g.&nbsp;mean, variance), but</li>
+<li><strong>no temporal change</strong> during estimate.</li>
+<li><em>E.g. measuring species richness in a forest</em>.</li>
 </ul>
 </div>
 <div class="fragment">
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="images/anchorman.gif" class="quarto-figure quarto-figure-left" height="350"></p>
-<figcaption>Source: <em>Anchorman</em> (2004)</figcaption>
-</figure>
-</div>
-</div>
-</section>
-<section id="but-why-r" class="slide level2">
-<h2>But, why R?</h2>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:50%;">
-<h4 id="mechanical-stress-on-plant-tissue">Mechanical stress on plant tissue</h4>
-<p><img data-src="images/raster.gif"></p>
-<p><a href="https://doi.org/10.1111/tpj.13290">Source</a></p>
-</div><div class="column" style="width:50%;">
-<h4 id="climate-stripes">Climate stripes</h4>
-<p><br>
-<br>
-<br>
-<br>
-<br>
-<img data-src="images/au-climate-2023.png"></p>
-<p><a href="https://dominicroye.github.io/en/2018/how-to-create-warming-stripes-in-r/">Source</a></p>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="doing-well" class="title-slide slide level1 center">
-<h1>Doing well <i class="fa-solid fa-trophy" aria-label="trophy"></i></h1>
-<p>Attend all lectures | Put in the hours | Ask questions</p>
-</section>
-<section id="attend-all-lectures" class="slide level2">
-<h2><i class="fa-solid fa-trophy" aria-label="trophy"></i> Attend ALL lectures</h2>
-<h3 id="attending-a-lecture-is-not-the-same-as-watching-a-recording">Attending a lecture is <em>not</em> the same as watching a recording…</h3>
+<!-- -->
+<h3 id="monitoring-studies">Monitoring studies</h3>
 <ul>
-<li>You can <strong>ask questions</strong> and <em>interact</em> with your peers.</li>
-<li>Your <strong>lecturer</strong> actively adjusts the pace/conten based on your <em>informal</em> feedback (e.g.&nbsp;confused looks, Google polls).</li>
-<li>If you don’t <em>understand</em> something, there is a <em>good</em> chance that you can address it <em>before</em> the next lecture or lab.</li>
+<li>Estimate a <strong><em>change</em></strong> in statistic (same as above), and</li>
+<li><strong>temporal change</strong> across observations, i.e.&nbsp;before and after.</li>
+<li><em>E.g. measuring species richness in a forest <strong>before and after a fire</strong></em>.</li>
 </ul>
+</div>
 </section>
-<section id="put-in-the-hours" class="slide level2">
-<h2><i class="fa-solid fa-trophy" aria-label="trophy"></i> Put in the hours</h2>
+<section id="sampling-designs" class="slide level2">
+<h2>Sampling designs</h2>
+<div class="fragment">
+<!-- -->
+<h3 id="simple-random-sampling">Simple random sampling:</h3>
 <ul>
-<li>This is a <strong>6 credit point</strong> unit, which means that you are expected to spend <strong>130 – 150 hours</strong> in total, including exam prep time (~10 h per week)!</li>
-<li><strong>Practice makes perfect</strong>. Tutorials and Labs help you apply the concepts you learn in lectures – complete all the exercises, and practice with the bonus questions provided.</li>
+<li>Each unit has an equal chance of being selected.</li>
+<li><strong>Randomly sample units from the entire population.</strong></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/adventuretime.gif" class="quarto-figure quarto-figure-center" height="350"></p>
+<p><img data-src="images/simple_random.png" class="quarto-figure quarto-figure-center" height="140"></p>
 </figure>
 </div>
-</section>
-<section id="ask-questions" class="slide level2">
-<h2><i class="fa-solid fa-person-circle-question" aria-label="person-circle-question"></i> Ask questions</h2>
+</div>
+<div class="fragment">
+<!-- -->
+<h3 id="stratified-random-sampling">Stratified random sampling</h3>
 <ul>
-<li><a href="https://edstem.org/au/dashboard"><strong>Ed</strong></a> is the <em>best</em> place to ask questions. We are way more responsive on <strong>Ed</strong> than on email.</li>
-<li>You <em>may</em> ask <strong>ChatGPT</strong> if you are stuck, or need help to understand something more general.</li>
-<li>We have drop-in sessions, where you can jump in and have a chat on Zoom. We will announce the schedule on <strong>Ed</strong>.</li>
+<li>The population is first divided into <em>strata</em> (more on this later).</li>
+<li><strong>Randomly sample units within each strata by simple random sampling, <em>standardised</em> by the inclusion probability (or weight) of each strata.</strong></li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/stratified.png" class="quarto-figure quarto-figure-center" height="140"></p>
+</figure>
+</div>
+</div>
 </section>
-<section id="lets-get-started" class="slide level2">
-<h2>Let’s get started!</h2>
-<h3 id="questions">Questions?</h3>
+<section id="what-is-random-sampling" class="slide level2">
+<h2>What is “random” sampling?</h2>
+<div class="fragment">
+<p><strong><em>Random</em></strong> selection of <strong>finite</strong> or <strong>infinite</strong> population units.</p>
+</div>
+<div class="fragment fade-up">
+<blockquote>
+<p>What does <em>random</em> mean?</p>
+</blockquote>
+</div>
+<div class="fragment">
+<p>Within a population, <strong>all</strong> units have a &gt; 0 probability of being selected <em>i.e.&nbsp;everything has a chance to be selected</em>.</p>
+<div>
+<ul>
+<li class="fragment">This <em>chance</em> is called the <strong>inclusion probability (<span class="math inline">\pi_i</span>)</strong>:
+<ul>
+<li class="fragment"><span class="math inline">\pi_i</span> is <strong>equal</strong> <em>within</em> a population unit – <em>i.e.&nbsp;all units have the same chance of being selected</em>.</li>
+<li class="fragment"><span class="math inline">\pi_i</span> <strong>not</strong> necessarily equal <em>between different</em> population units – <em>i.e.&nbsp;a unit from one population unit may have a different chance of being selected than a unit from another population unit</em> - more on this later.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<!-- -->
+<h3 id="how-do-we-perform-random-sampling-in-real-life">How do we perform random sampling in real life?</h3>
+<ul>
+<li><strong>Random number generator</strong> (RNG) – e.g.&nbsp;R’s <code>sample()</code> function.</li>
+<li><strong>Random number table</strong> – e.g.&nbsp;<a href="https://www.nist.gov/system/files/documents/2017/04/28/AppenB-HB133-05-Z.pdf">Random number table</a> by the National Institute of Standards and Technology (NIST).</li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="interpreting-sampled-data" class="title-slide slide level1 center">
+<h1>Interpreting sampled data</h1>
+
+</section>
+<section id="we-know-that" class="slide level2">
+<h2>We know that…</h2>
+<h3 id="from-the-previous-lecture">From the previous lecture</h3>
+<div>
+<ul>
+<li class="fragment"><strong>Sample mean</strong> is a good measure of central tendency.</li>
+<li class="fragment"><strong>Sample variance</strong> is a good measure of dispersion.</li>
+<li class="fragment"><strong>Sample size</strong> affects the precision of the sample mean.</li>
+</ul>
+</div>
+<div class="fragment">
+<!-- -->
+<h3 id="can-we-combine-all-of-the-above-in-a-single-statistic">Can we combine all of the above in a single statistic?</h3>
+</div>
+</section></section>
+<section>
+<section id="confidence-intervals" class="title-slide slide level1 center">
+<h1>Confidence intervals</h1>
+
+<img data-src="images/ci-garfield.png" class="r-stretch"></section>
+<section id="combining-an-estimate-with-its-precision" class="slide level2">
+<h2>Combining an estimate with its precision</h2>
+<ul>
+<li>A <strong>confidence interval (CI)</strong> is a range of values, derived from a sample of data, that is used to estimate the range of values for a population <strong>parameter</strong>.</li>
+<li>Crucial for <strong>hypothesis testing</strong> and <strong>estimation</strong>, the basis of statistical inference.</li>
+<li>Will be frequently mentioned throughout this unit!</li>
+</ul>
+<h3 id="general-form">General form</h3>
+<p>In general, a CI has the form: <span class="math display">\text{estimate} \pm \text{margin of error}</span></p>
+<p>where the margin of error is a <strong>function of the standard error</strong> of the estimate:</p>
+<p><span class="math display">\text{estimate} \pm (\text{critical value} \times \text{standard error (estimate)})</span></p>
+<p>where the critical value is based on the <strong>sampling distribution</strong> of the estimate i.e.&nbsp;the <strong><span class="math inline">t</span>-distribution</strong>.</p>
+</section>
+<section id="interpreting-confidence-intervals" class="slide level2">
+<h2>Interpreting confidence intervals</h2>
+<ul>
+<li>Confidence intervals depend on a specified <strong>confidence level</strong> (e.g.&nbsp;95%, 99%) with higher confidence levels producing wider intervals (i.e.&nbsp;more conservative).</li>
+<li>Think of it as a <strong>range of values</strong> that we are fairly sure contains the true value of the population parameter.</li>
+</ul>
+<div class="fragment">
+<!-- -->
+<h3 id="fishing-net-analogy">Fishing net analogy</h3>
+<p><strong>Imagine that we are fishing in a river and we want to catch a fish that we saw.</strong></p>
+<ul>
+<li>If we use a <em>spear</em> and throw it at a fish, we might miss it.</li>
+<li>If we use a <strong>net</strong>, we have a better chance of catching the fish.</li>
+<li>The <em>bigger</em> the net, the <em>more likely</em> we are to catch the fish.</li>
+</ul>
+<p>Analogy: <strong>The net is the confidence interval, and the fish is the true population parameter.</strong></p>
+</div>
+</section></section>
+<section>
+<section id="calculating-confidence-intervals" class="title-slide slide level1 center">
+<h1>Calculating confidence intervals</h1>
+
+</section>
+<section id="what-we-need" class="slide level2">
+<h2>What we need</h2>
+<ol type="1">
+<li><strong>Estimate</strong> of the population parameter, e.g.&nbsp;the <span style="color: #e64626;"><strong>sample mean</strong></span>.</li>
+<li><span style="color: #e64626;"><strong>Critical value</strong></span> from the sampling distribution of the estimate, which depends on the <strong>number of samples</strong> and the <strong>confidence level</strong>. This is usually based on the <strong><span class="math inline">t</span>-distribution</strong>.</li>
+<li><strong>Standard error</strong> of the estimate, standardised by the number of samples i.e.&nbsp;<span style="color: #e64626;"><strong>SE of the mean</strong></span>.</li>
+</ol>
+<h3 id="why-the-t-distribution">Why the t-distribution?</h3>
+<ul>
+<li>The <span class="math inline">t</span>-distribution results from <strong>standardising the sample variance by the number of samples</strong>.
+<ul>
+<li>Used when the true population variance is unknown.</li>
+</ul></li>
+<li>It resembles the normal distribution, but with heavier tails for small sample sizes.</li>
+<li>As sample size increases, the <span class="math inline">t</span>-distribution converges to the normal distribution.</li>
+</ul>
+</section></section>
+<section>
+<section id="data-story-soil-carbon" class="title-slide slide level1 center">
+<h1>Data story: soil carbon</h1>
+
+</section>
+<section id="soil-carbon" class="slide level2">
+<h2>Soil carbon</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="data-story">Data story</h3>
+<p><img data-src="images/datastory.png"></p>
+<p>Soil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).</p>
+</div><div class="column" style="width:50%;">
+<p>We start with the sampled data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>soil <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">56</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">86</span>, <span class="dv">71</span>, <span class="dv">42</span>)</span>
+<span id="cb1-2"><a href=""></a>soil</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 48 56 90 78 86 71 42</code></pre>
+</div>
+</div>
+<p><strong>What is the mean soil carbon content and how confident are we in this estimate?</strong></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="simple-random-sampling-estimates" class="title-slide slide level1 center">
+<h1>Simple random sampling: estimates</h1>
+
+</section>
+<section id="confidence-interval" class="slide level2">
+<h2>95 % Confidence interval</h2>
+<h3 id="the-formula">The formula</h3>
+<p><span class="math display">95\%\ CI = \bar y \pm t^{0.025}_{n-1} \times SE(\bar y)</span></p>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/confused.gif" class="quarto-figure quarto-figure-center" height="150"></p>
+</figure>
+</div>
+</div>
+<div class="fragment">
+<p>Recall: <span class="math display">CI = \text{estimate} \pm \text{margin of error}</span></p>
+<p>So: <span class="math display">95\%\ CI = \text{sample mean} \pm \text{t-critical value} \times \text{standard error of the mean}</span></p>
+</div>
+<div class="fragment">
+<p><strong>We need to calculate each of these components:</strong></p>
+<p>① Sample mean <span class="math inline">\bar y</span>; ⓶ Critical value <span class="math inline">t^{0.025}_{n-1}</span>; and ③ Standard error of the mean <span class="math inline">SE(\bar y)</span></p>
+</div>
+</section>
+<section id="sample-mean" class="slide level2">
+<h2>Sample mean</h2>
+<p><span class="math display">\bar y = \frac{1}{n} \times \sum_{i = 1}^{n}y_i</span></p>
+<blockquote>
+<p>The <strong>sum</strong> of all sampled <strong>values</strong>, divided by the number of <strong>samples</strong>.</p>
+</blockquote>
+<p>Relatively straightforward to calculate.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>mean_soil <span class="ot">&lt;-</span> <span class="fu">mean</span>(soil)</span>
+<span id="cb3-2"><a href=""></a>mean_soil</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 67.28571</code></pre>
+</div>
+</div>
+</section>
+<section id="t-critical-value" class="slide level2">
+<h2><span class="math inline">t</span>-critical value</h2>
+<h3 id="what-is-the-t-distribution">What is the <span class="math inline">t</span>-distribution?</h3>
+<p>The <span class="math inline">t</span>-distribution is a <strong>family of distributions</strong> indexed by a <strong>parameter</strong> called <strong>degrees of freedom</strong>.</p>
+<div class="fragment">
+<!-- -->
+<h3 id="understanding-degrees-of-freedom-for-a-mean-estimate">Understanding degrees of freedom for a mean estimate</h3>
+<div>
+<ul>
+<li class="fragment">Degrees of freedom (df) represent the count of independent data points used to estimate a parameter.</li>
+<li class="fragment">For the mean, df equals <code>n - 1</code>. For a sample size <code>n</code>, the last sample isn’t independent – it <strong>must</strong> satisfy the mean.</li>
+<li class="fragment">For instance, in a 3-value data set with a mean of 6, if two values are 7 and 3, the final value <strong>must</strong> be 8 and df = 2.</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<!-- -->
+<h3 id="calculating-the-t-critical-value">Calculating the <span class="math inline">t</span>-critical value</h3>
+<p>We refer to the <span class="math inline">t</span>-distribution table to find the critical value for a given confidence level and degrees of freedom. These days, we can use the <code>qt()</code> function in R. For a 95% confidence level, we use the 0.975 quantile since the <span class="math inline">t</span>-distribution is symmetric.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>t_critical <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="fu">length</span>(soil) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb5-2"><a href=""></a>t_critical</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.446912</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="standard-error-of-the-mean" class="slide level2">
+<h2>Standard error of the mean</h2>
+<div class="fragment">
+<p>The variance of the mean, <span class="math inline">var(\bar y)</span>, is: <span class="math display">var(\bar y) = \frac{var(y)}{n}</span></p>
+</div>
+<div class="fragment">
+<p>Variance is standard deviation squared (<span class="math inline">s^2</span>), so the formula is: <span class="math display">var(\bar y) = \frac{s^2(y)}{n}</span></p>
+</div>
+<div class="fragment">
+<p>Since <span class="math inline">SE = \frac{s}{\sqrt{n}}</span>, then the standard error of the mean, <span class="math inline">SE(\bar y)</span>, is: <span class="math display">SE(\bar y) = \frac{s(y)}{\sqrt{n}} = \frac{\sqrt{s^2(y)}}{\sqrt{n}} = \sqrt{var(\bar y)}</span></p>
+</div>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wtf.gif" class="quarto-figure quarto-figure-center" height="160"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="in-words" class="slide level2">
+<h2>In words</h2>
+<blockquote>
+<p><strong>step 1</strong> calculate the variance <span class="math inline">var(y)</span> of the sampled values. <br> <strong>step 2</strong> divide <span class="math inline">var(y)</span> by the number of samples (<span class="math inline">n</span>) to obtain variance of the mean <span class="math inline">var{(\bar y)}</span>. <br> <strong>step 3</strong> take the square root of <span class="math inline">var{(\bar y)}</span> to obtain the standard error of the mean <span class="math inline">\sqrt{var{(\bar{y})}} = SE(\bar y)</span>.</p>
+</blockquote>
+<div class="fragment">
+<p>In R, we can calculate the standard error of the mean using the <code>var()</code> or <code>sd()</code> function and the number of samples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>se_mean <span class="ot">&lt;-</span> <span class="fu">sd</span>(soil) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(soil))</span>
+<span id="cb7-2"><a href=""></a><span class="co"># also ok:</span></span>
+<span id="cb7-3"><a href=""></a><span class="co"># se_mean &lt;- sqrt(var(soil) / length(soil))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="putting-it-all-together" class="slide level2">
+<h2>Putting it all together</h2>
+<p>So far we have:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>mean_soil <span class="ot">&lt;-</span> <span class="fu">mean</span>(soil)</span>
+<span id="cb8-2"><a href=""></a>t_critical <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="fu">length</span>(soil) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb8-3"><a href=""></a>se_mean <span class="ot">&lt;-</span> <span class="fu">sd</span>(soil) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(soil))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we can calculate the confidence interval:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>margin_error <span class="ot">&lt;-</span> t_critical <span class="sc">*</span> se_mean</span>
+<span id="cb9-2"><a href=""></a>ci95 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">mean =</span> mean_soil, </span>
+<span id="cb9-3"><a href=""></a>  <span class="at">L95 =</span> mean_soil <span class="sc">-</span> margin_error, </span>
+<span id="cb9-4"><a href=""></a>  <span class="at">U95 =</span> mean_soil <span class="sc">+</span> margin_error)</span>
+<span id="cb9-5"><a href=""></a></span>
+<span id="cb9-6"><a href=""></a>ci95</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    mean      L95      U95 
+67.28571 49.84627 84.72516 </code></pre>
+</div>
+</div>
+</section>
+<section id="questions" class="slide level2">
+<h2>Questions</h2>
+<ul>
+<li>How precise is our estimate?</li>
+<li>How big a change must there be to estimate a statistically significant change?</li>
+<li><strong>Can we sample more efficiently?</strong></li>
+</ul>
+</section></section>
+<section>
+<section id="tomorrow-stratified-random-sampling" class="title-slide slide level1 center">
+<h1>Tomorrow: stratified random sampling</h1>
+
+</section>
+<section id="thanks" class="slide level2">
+<h2>Thanks!</h2>
+<h3 id="questions-1">Questions?</h3>
 <p>This presentation is based on the <a href="https://github.com/usyd-soles-edu/soles-revealjs">SOLES Quarto reveal.js template</a> and is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></p>
 <!-- Links -->
 <div class="quarto-auto-generated-content">
-<p><img src="images/usyd_horizontal.svg" class="slide-logo"></p>
+<p><img src="_assets/usyd_horizontal.svg" class="slide-logo"></p>
 <div class="footer footer-default">
 
 </div>
@@ -542,19 +816,19 @@ Dr.&nbsp;Januar Harianto
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="Lecture-01a_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="Lecture-02a_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="Lecture-01a_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="Lecture-01a_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="Lecture-01a_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="Lecture-01a_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="Lecture-01a_files/libs/revealjs/plugin/verticator/verticator.js"></script>
-  <script src="Lecture-01a_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="Lecture-02a_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Lecture-02a_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Lecture-02a_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Lecture-02a_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Lecture-02a_files/libs/revealjs/plugin/verticator/verticator.js"></script>
+  <script src="Lecture-02a_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="Lecture-01a_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="Lecture-01a_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="Lecture-01a_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Lecture-02a_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Lecture-02a_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Lecture-02a_files/libs/revealjs/plugin/zoom/zoom.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -731,6 +1005,44 @@ Dr.&nbsp;Januar Harianto
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
